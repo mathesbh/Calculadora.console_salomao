@@ -45,5 +45,18 @@ namespace Teste
 
             Assert.Equal(expected, dividir);
         }
+
+        [Theory]
+        [InlineData(10, 5, 50)]
+        [InlineData(150, 5, 750)]
+        [InlineData(200, -5, -1000)]
+        [InlineData(0, 10, 0)]
+
+        public void OperacaoMultiplicar(float n1, float n2, float expected)
+        {
+            var multiplicar = Operacoes.Multiplicar(n1, n2);
+
+            Assert.Equal(expected, multiplicar);
+        }
     }
 }
