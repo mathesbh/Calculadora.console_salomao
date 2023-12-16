@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Application;
 
 namespace Calculator
@@ -50,7 +51,7 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Somar(v1, v2);
-            Console.WriteLine($"O resultado da soma é {resultado}");
+            Console.WriteLine("O resultado da soma é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
         }
@@ -67,7 +68,7 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Subtrair(v1, v2);
-            Console.WriteLine($"O resultado da subtração é {resultado}");
+            Console.WriteLine("O resultado da subtração é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
         }
@@ -84,7 +85,7 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Dividir(v1, v2);
-            Console.WriteLine($"O resultado da divisão é {resultado}");
+            Console.WriteLine("O resultado da divisão é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
         }
@@ -101,7 +102,7 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Multiplicar(v1, v2);
-            Console.WriteLine($"O resultado da multiplicação é {resultado}");
+            Console.WriteLine("O resultado da multiplicação é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
         }
