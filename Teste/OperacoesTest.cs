@@ -32,5 +32,18 @@ namespace Teste
 
             Assert.Equal(expected, float.Parse(format));
         }
+
+        [Theory]
+        [InlineData(10, 5, 2)]
+        [InlineData(150, 5, 30)]
+        [InlineData(200, -5, -40)]
+        [InlineData(0, 10, 0)]
+
+        public void OperacaoDividir(float n1, float n2, float expected)
+        {
+            var dividir = Operacoes.Dividir(n1, n2);
+
+            Assert.Equal(expected, dividir);
+        }
     }
 }
