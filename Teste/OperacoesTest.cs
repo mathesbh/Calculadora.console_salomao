@@ -17,5 +17,20 @@ namespace Teste
 
             Assert.Equal(expected, soma);
         }
+
+        [Theory]
+        [InlineData(10, 15, -5)]
+        [InlineData(20.8, 5.2, 15.6)]
+        [InlineData(1, 15.8, -14.8)]
+        [InlineData(0, 15, -15)]
+        [InlineData(-1, 10, -11)]
+
+        public void OperacaoSubtrair(float n1, float n2, float expected)
+        {
+            var subtrair = Operacoes.Subtrair(n1, n2);
+            var format = subtrair.ToString("F");
+
+            Assert.Equal(expected, float.Parse(format));
+        }
     }
 }
