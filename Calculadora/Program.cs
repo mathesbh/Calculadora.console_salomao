@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using Application;
+using Application.Models;
+using Data;
 
 namespace Calculator
 {
@@ -51,6 +53,9 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Somar(v1, v2);
+
+            SalvarHistoricoOperacoes("Soma", resultado);
+
             Console.WriteLine("O resultado da soma é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
@@ -68,6 +73,9 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Subtrair(v1, v2);
+
+            SalvarHistoricoOperacoes("Subtração", resultado);
+
             Console.WriteLine("O resultado da subtração é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
@@ -85,6 +93,9 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Dividir(v1, v2);
+
+            SalvarHistoricoOperacoes("Divisão", resultado);
+
             Console.WriteLine("O resultado da divisão é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
@@ -102,9 +113,19 @@ namespace Calculator
             Console.WriteLine("");
 
             float resultado = Operacoes.Multiplicar(v1, v2);
+
+            SalvarHistoricoOperacoes("Multiplicação", resultado);
+
             Console.WriteLine("O resultado da multiplicação é " + resultado.ToString("F2", CultureInfo.InvariantCulture));
             Console.ReadKey();
             Menu();
+        }
+
+        static void SalvarHistoricoOperacoes(string operacao, float resultado)
+        {
+            var historico = new OperacoesHistorico(operacao, resultado, DateTime.Now);
+            using (var repo = new OperacoesHistoricoDAO())
+                repo.Adicionar(historico);
         }
     }
 }
