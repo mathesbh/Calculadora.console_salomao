@@ -3,6 +3,7 @@ using System.Globalization;
 using Application;
 using Application.Models;
 using Data;
+using Data.Arquivo;
 
 namespace Calculator
 {
@@ -126,6 +127,9 @@ namespace Calculator
             var historico = new OperacoesHistorico(operacao, resultado, DateTime.Now);
             using (var repo = new OperacoesHistoricoDAO())
                 repo.Adicionar(historico);
+
+            var salvarArquivo = new SalvarArquivo();
+            salvarArquivo.Salvar(operacao);
         }
     }
 }
